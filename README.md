@@ -244,7 +244,7 @@ Here are a some useful databases container images and sample commands that attem
 #### Postgres 
 https://hub.docker.com/_/postgres
 ```bash
-docker run -d --rm \
+docker run -d --rm  -- name <container_name>\
   -v pgdata:/var/lib/postgresql/data \
   -e POSTGRES_PASSWORD=foobarbaz \
   -p 5432:5432 \
@@ -257,7 +257,12 @@ docker run -d --rm \
   -e POSTGRES_PASSWORD=foobarbaz \
   -p 5432:5432 \
   postgres:15.1-alpine -c 'config_file=/etc/postgresql/postgresql.conf'
+
+# to work on your postgres server (executing query postgres terminal)
+docker exec -it <container_name_or_id> psql -U postgres
 ```
+
+
 
 #### Mongo
 https://hub.docker.com/_/mongo
